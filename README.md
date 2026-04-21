@@ -67,10 +67,3 @@ pnpm dev
 
 Open http://localhost:3000 in your browser to see the result.
 
----
-
-## 💡 Notes
-
-This project demonstrates modern frontend development practices, including state management and efficient API interaction.
-
-Happy hacking 🚀
