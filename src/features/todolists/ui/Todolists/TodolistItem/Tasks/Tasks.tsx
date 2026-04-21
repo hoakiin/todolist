@@ -7,6 +7,7 @@ import { TaskItem } from "./TaskItem/TaskItem"
 import { TasksSkeleton } from "./TasksSkeleton/TasksSkeleton"
 import { TasksPagination } from "./TasksPagination/TasksPagination"
 import { DomainTodolist } from "@/features/todolists/lib"
+import { PAGE_SIZE } from "@/common/constants/constants"
 
 type Props = {
   todolist: DomainTodolist
@@ -31,6 +32,15 @@ export const Tasks = ({ todolist }: Props) => {
       setTasks(data.items)
     }
   }, [data, page])
+
+  useEffect(() => {
+    if (!data) return
+
+    const totalPages = Math.ceil(data.totalCount / PAGE_SIZE)
+    if (page > totalPages) {
+      setPage(totalPages || 1)
+    }
+  }, [data?.totalCount, page])
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event

@@ -3,23 +3,23 @@ import { TaskStatus } from "@/common/enums"
 import { createTaskModel } from "@/common/utils"
 import { useDeleteTaskMutation, useUpdateTaskMutation } from "@/features/todolists/api/tasksApi"
 import type { DomainTask } from "@/features/todolists/api/tasksApi.types"
+import { DomainTodolist } from "@/features/todolists/lib"
+import { useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
 import DeleteIcon from "@mui/icons-material/Delete"
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator"
 import Checkbox from "@mui/material/Checkbox"
 import IconButton from "@mui/material/IconButton"
 import ListItem from "@mui/material/ListItem"
 import type { ChangeEvent } from "react"
 import { getListItemSx } from "./TaskItem.styles"
-import { DomainTodolist } from "@/features/todolists/lib"
-import { useSortable } from "@dnd-kit/sortable"
-import { CSS } from "@dnd-kit/utilities"
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator"
 
 type Props = {
   task: DomainTask
   todolist: DomainTodolist
 }
 
-export const TaskItem = ({ task, todolist }: Props) => {
+export const TaskItem = ({ task, todolist}: Props) => {
   const [updateTask] = useUpdateTaskMutation()
   const [deleteTask] = useDeleteTaskMutation()
 
@@ -100,7 +100,7 @@ export const TaskItem = ({ task, todolist }: Props) => {
               fontSize: 18,
               color: "text.secondary",
               "&:hover": { color: "primary.main" },
-              opacity: 0.4
+              opacity: 0.4,
             }}
           />
         </div>
