@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc -b && vite build --base=./",
+    "build": "tsc -b && vite build",
     "test": "vitest",
     "preview": "vite preview",
     "predeploy" : "pnpm run build",
